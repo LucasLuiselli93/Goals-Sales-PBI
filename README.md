@@ -15,7 +15,7 @@ La dirección de logística global necesitaba monitorear el cumplimiento de obje
 3.  **Anonimización de Datos:** Proceso de escalado aleatorio de cifras para proteger la confidencialidad sin perder la integridad de las tendencias.
 
 ## 📈 Visualización del Proyecto
-![Dashboard Principal](assets/dashboard_performance.png)
+![Dashboard Principal](assets/Expo-Objetivos.png)
 
 ## 💡 Impacto
 *   Reducción del tiempo de consolidación de reportes de 3 días a actualización automática.
