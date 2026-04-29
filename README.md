@@ -4,26 +4,25 @@
 ![Dashboard de Performance Global](assets/EXPO01.png)
 
 ## 📌 Escenario de Negocio
-La dirección de logística global requería monitorear el cumplimiento de objetivos de ventas y volumen (CBM) por región y sucursal en tiempo real. Este dashboard centraliza la operación de múltiples nodos para identificar desviaciones críticas en el presupuesto anual y optimizar la toma de decisiones.
+La Dirección Comercial requería monitorear el cumplimiento de objetivos de ventas por Booking (bkg) y volumen (CBM) por región, oficina, puerto de carga, puerto de descarga y agente en tiempo real. Anteriormente no estaba estandarizado y cada oficina regional los media trimestralmente. Este dashboard, centraliza la operación de múltiples oficinas y permite identificar rapidamente el status de cumplimiento de ventas para seguimiento de las areas comerciales de cada oficina. 
 
 ## 🛠️ Stack Tecnológico
 * **Herramienta de BI:** Power BI Desktop.
 * **Modelado:** Esquema en estrella (Star Schema).
-* **ETL:** Power Query y Python (Pandas) para normalización.
+* **ETL:** Power Query y Python (Pandas) para normalización. Datos segmentados por RLS
 * **Orquestación:** Apache Airflow.
 * **Lenguajes:** DAX, SQL (Oracle), Python.
 
 ## Desafíos Técnicos Resueltos
 
-* **Sincronización de granularidad temporal:** Diseño de un modelo capaz de cruzar transacciones operativas diarias (ventas/bookings) con presupuestos comerciales definidos a nivel semanal y mensual, evitando la duplicación de valores en las agregaciones.
-* **Exposición de datos sin transacciones (Puntos ciegos):** Implementación de lógica DAX y configuración de visualizaciones para anular el comportamiento nativo que oculta nodos sin ventas. Esto fuerza la visualización de agencias o puertos con presupuesto asignado pero rendimiento operativo nulo.
+* **Manejo de granularidad temporal:** Diseño de un modelo capaz de cruzar transacciones operativas diarias (ventas/bookings) con objetivos comerciales evitando la duplicación de valores en las agregaciones. Estos objetivos fueron definidos tanto a nivel semanal y mensual y por oficina, Region, POD, POL y Agente. 
+* **Exposición de datos sin transacciones (Puntos ciegos):** Implementación de lógica DAX avanzada y configuración de visualizaciones para anular el comportamiento nativo que oculta nodos sin ventas. Esto fuerza la visualización de agencias o puertos con presupuesto asignado pero rendimiento operativo nulo.
 * **Control de jerarquías dinámicas:** Desarrollo de cálculos que detectan el contexto de filtro activo (Nivel Global, Región, Puerto o Agente) para reasignar y calcular los presupuestos sin corromper la matemática de los subtotales de la matriz.
-* **Estandarización del modelo de datos:** Refactorización de múltiples fuentes de datos estructurando un catálogo maestro único (Dimensiones Conformadas). Esto integra de forma coherente las operaciones logísticas marítimas y aéreas bajo un mismo esquema relacional.
 
 ## Impacto y Resultados
 
-* **Visibilidad operativa inmediata:** Identificación instantánea de nodos logísticos que incumplen sus cuotas comerciales, eliminando el procesamiento manual de múltiples hojas de cálculo.
-* **Integridad de datos:** Alineación exacta entre la facturación transaccional y los presupuestos comerciales mediante la corrección estructural de las bases de origen, garantizando KPIs de cumplimiento precisos.
+* **Visibilidad operativa inmediata:** Identificación instantánea del rendimiento operativo de cada oficina, eliminando el procesamiento manual de múltiples hojas de cálculo y con ellos los excesivos tiempos de reacción
+* **Integridad de datos:** Alineación exacta entre los datos del sistema y los objetivos comerciales mediante la corrección estructural de las bases de origen, garantizando KPIs de cumplimiento precisos.
 * **Consolidación de herramientas analíticas:** Arquitectura escalable que centraliza el análisis de múltiples unidades de negocio (Exportación, Importación, Marítimo, Aéreo) en un único modelo semántico interactivo.
 
 ---
