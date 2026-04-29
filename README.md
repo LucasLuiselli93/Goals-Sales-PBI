@@ -7,7 +7,7 @@ La dirección de logística global necesitaba monitorear el cumplimiento de obje
 *   **Herramienta de BI:** Power BI Desktop.
 *   **Modelado:** Esquema en estrella (Star Schema) con tablas de hechos de ventas y metas.
 *   **ETL:** Power Query para la normalización de datos regionales y limpieza de inconsistencias.
-*   **Lenguajes:** DAX (Medidas de inteligencia de tiempo y cumplimiento) y SQL para la extracción de datos.
+*   **Lenguajes:** DAX (Medidas de inteligencia de tiempo y cumplimiento), SQL para la extracción y Python para la orquestacion mediante Apache Airflow.
 
 ## 🚀 Desafíos Técnicos Resueltos
 1.  **Cálculo de Cumplimiento Dinámico:** Implementación de lógica DAX para comparar `Booking vs Goals` con filtros aplicados a múltiples zonas horarias y monedas.
@@ -15,7 +15,7 @@ La dirección de logística global necesitaba monitorear el cumplimiento de obje
 3.  **Anonimización de Datos:** Proceso de escalado aleatorio de cifras para proteger la confidencialidad sin perder la integridad de las tendencias.
 
 ## 📈 Visualización del Proyecto
-![Dashboard Principal](assets/Expo-Objetivos.png)
+![Dashboard Principal](assets/EXPO01.png)
 
 ## 💡 Impacto
 *   Reducción del tiempo de consolidación de reportes de 3 días a actualización automática.
