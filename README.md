@@ -13,13 +13,21 @@ La dirección de logística global requería monitorear el cumplimiento de objet
 * **Orquestación:** Apache Airflow.
 * **Lenguajes:** DAX, SQL (Oracle), Python.
 
-## 🚀 Desafíos Técnicos Resueltos
+## Desafíos Técnicos Resueltos
 
-1. **Cálculo de Cumplimiento Dinámico:** Lógica DAX avanzada para comparar `Booking vs Goals` gestionando múltiples zonas horarias y monedas.
-2. **Optimización del Modelo:** Reducción de latencia mediante jerarquización de dimensiones y optimización de tipos de datos.
-3. **Anonimización:** Escalado aleatorio de métricas para proteger datos sensibles sin alterar las tendencias y correlaciones.
+* **Sincronización de granularidad temporal:** Diseño de un modelo capaz de cruzar transacciones operativas diarias (ventas/bookings) con presupuestos comerciales definidos a nivel semanal y mensual, evitando la duplicación de valores en las agregaciones.
+* **Exposición de datos sin transacciones (Puntos ciegos):** Implementación de lógica DAX y configuración de visualizaciones para anular el comportamiento nativo que oculta nodos sin ventas. Esto fuerza la visualización de agencias o puertos con presupuesto asignado pero rendimiento operativo nulo.
+* **Control de jerarquías dinámicas:** Desarrollo de cálculos que detectan el contexto de filtro activo (Nivel Global, Región, Puerto o Agente) para reasignar y calcular los presupuestos sin corromper la matemática de los subtotales de la matriz.
+* **Estandarización del modelo de datos:** Refactorización de múltiples fuentes de datos estructurando un catálogo maestro único (Dimensiones Conformadas). Esto integra de forma coherente las operaciones logísticas marítimas y aéreas bajo un mismo esquema relacional.
+
+## Impacto y Resultados
+
+* **Visibilidad operativa inmediata:** Identificación instantánea de nodos logísticos que incumplen sus cuotas comerciales, eliminando el procesamiento manual de múltiples hojas de cálculo.
+* **Integridad de datos:** Alineación exacta entre la facturación transaccional y los presupuestos comerciales mediante la corrección estructural de las bases de origen, garantizando KPIs de cumplimiento precisos.
+* **Consolidación de herramientas analíticas:** Arquitectura escalable que centraliza el análisis de múltiples unidades de negocio (Exportación, Importación, Marítimo, Aéreo) en un único modelo semántico interactivo.
 
 ---
+
 
 ## 🏗️ Arquitectura de Datos y Modelo
 El núcleo del proyecto es un **Esquema en Estrella** que permite un filtrado eficiente y escalabilidad.
@@ -34,9 +42,3 @@ El flujo de datos se sostiene sobre una estructura robusta:
 
 ---
 
-## 💡 Impacto y Resultados
-* **Eficiencia:** Reducción del tiempo de consolidación de reportes de 3 días a actualización automática inmediata.
-* **Gobierno de Datos:** Implementación de una "versión única de la verdad" para todas las sucursales globales.
-* **Accionabilidad:** Identificación inmediata de nodos con bajo rendimiento mediante KPIs de cumplimiento visuales.
-
----
